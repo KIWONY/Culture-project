@@ -1,0 +1,24 @@
+
+.header_logo{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 4rem;
+    margin: 2.5rem;
+}
+.footer_logo{
+    font-family: 'Shadows Into Light', cursive;
+    font-size:1.3rem;
+    margin-top: 1.5rem
+}
+
+.header_style{
+    height: 10rem; background-color: lightpink; border-radius: 1rem; margin: 2rem 1rem; text-align: center
+}
+
+
+.footer_style{
+    height: 10rem; background-color: lightblue; border-radius: 1rem; margin: 2rem 1rem; text-align :center
+}
+
+.free_style{
+    height:30rem; background-color: lightgreen; border-radius: 1rem; margin: 2rem 1rem; text-align: center;
+}
