@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        {# personapp에 있는 create route로 연결해라 #}
+        <form action="{% url "personapp:create" %}" method="post"></form>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary">
+    </div>
+{% endblock %}

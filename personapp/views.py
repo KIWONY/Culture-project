@@ -1,8 +1,11 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView
 
 from personapp.models import NiceWorld
 
@@ -23,3 +26,8 @@ def nice_world(request):
         nice_world_list = NiceWorld.objects.all()
         return render(request,"personapp/nice_world.html", context={"nice_world_list": nice_world_list})
 
+class AccountCreateView(CreateView):        #import
+    model = User                            #장고에서 기본제공, ctrl+b 눌러서 소스코드 확인, import
+    form_class = UserCreationForm           #기본제공, import
+    success_url = reverse_lazy("personapp:nice_world")      #class와 function의 파이썬에서 불러와지는 방법의 차이(reverse, reverse_lazy)
+    template_name = "personapp/create.html"                 #회원가입할 때 보이는 html
