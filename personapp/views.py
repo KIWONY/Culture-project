@@ -1,7 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse
+
 from personapp.models import NiceWorld
 
 
@@ -13,8 +15,11 @@ def nice_world(request):
         new_nice_world.text = temp
         new_nice_world.save()               #db에 저장 중
 
-        return render(request,"personapp/nice_world.html", context={"nice_world_output": new_nice_world})   #객체를 내보냄
+        nice_world_list = NiceWorld.objects.all()
+        return HttpResponseRedirect(reverse("personapp:nice_world"))        #personapp 내부에 있는 nice_world로 재접속
+        # return render(request,"personapp/nice_world.html", context={"nice_world_list": nice_world_list})   #객체를 내보냄
     #dobi/personapp/templates/personapp/nice_world.html
     else:
-        return render(request,"personapp/nice_world.html", context={"text" : "GET METHODS!!!!!!!"})
+        nice_world_list = NiceWorld.objects.all()
+        return render(request,"personapp/nice_world.html", context={"nice_world_list": nice_world_list})
 

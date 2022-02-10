@@ -12,8 +12,10 @@
             </div>
             <input type="submit" class="btn btn-primary" value="POST">
         </form>
-        {% if nice_world_output %}
-            {{ nice_world_output.text }}
+        {% if nice_world_list %}
+            {% for nice_world in nice_world_list %}
+                <h4>{{ nice_world.text }}</h4>
+            {% endfor %}
         {% endif %}
     </div>
 
