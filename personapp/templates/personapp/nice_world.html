@@ -3,8 +3,18 @@
 {% block content %}
     <div class="free_style">
 
-        <h1>Dobi is free</h1>
-
+        <h1 style="font-family: 'Shadows Into Light', cursive; ">Dobi is free</h1>
+{#        요청명세서#}
+        <form action='/person/nice_world/' method="post">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="nice_world_input">
+            </div>
+            <input type="submit" class="btn btn-primary" value="POST">
+        </form>
+        {% if nice_world_output %}
+            {{ nice_world_output.text }}
+        {% endif %}
     </div>
 
 
