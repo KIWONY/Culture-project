@@ -7,7 +7,20 @@
         <span>ddddd  </span>
         <span>ddddd  </span>
         <span>ddddd  </span>
-        <span>ddddd  </span>
+        {# 로그인이 되어있지않다면 #}
+        {% if not user.is_authenticated %}
+             {# url을 next라는 파라이터로 넘겨줌으로써 로그인 후 원래 있던 자리(화면)로 돌아갈 수 있게 함 #}
+            <a href="{% url "personapp:login" %}?next={{ request.path }}">       {# url을 next라는 파라이터로 넘겨줌으로써 #}
+                <span>Login</span>
+            </a>
+            {# 로그인이 되어있다면 #}
+        {% else %}
+            <a href="{% url "personapp:logout" %}?next={{ request.path }}">
+                <span>Logout</span>
+            </a>
+
+        {% endif %}
+
     </div>
 
 </div>

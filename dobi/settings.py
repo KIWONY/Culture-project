@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import environ,os
+from django.urls import reverse_lazy
 
 env = environ.Env(
     # set casting, default value
@@ -133,7 +134,29 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+# default 값 방지
+LOGIN_REDIRECT_URL = reverse_lazy("personapp:nice_world")
+LOGOUT_REDIRECT_URL = reverse_lazy("personapp:login")
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

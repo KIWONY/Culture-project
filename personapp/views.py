@@ -26,6 +26,7 @@ def nice_world(request):
         nice_world_list = NiceWorld.objects.all()
         return render(request,"personapp/nice_world.html", context={"nice_world_list": nice_world_list})
 
+
 class AccountCreateView(CreateView):        #import
     model = User                            #장고에서 기본제공, ctrl+b 눌러서 소스코드 확인, import
     form_class = UserCreationForm           #기본제공, import
