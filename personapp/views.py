@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from personapp.models import NiceWorld
 
@@ -26,9 +26,17 @@ def nice_world(request):
         nice_world_list = NiceWorld.objects.all()
         return render(request,"personapp/nice_world.html", context={"nice_world_list": nice_world_list})
 
+# user는 장고에서 제공하는 템플릿 어디에서든 사용이 가능한, 요청을 보내는 유저의 객체
 
 class AccountCreateView(CreateView):        #import
     model = User                            #장고에서 기본제공, ctrl+b 눌러서 소스코드 확인, import
     form_class = UserCreationForm           #기본제공, import
     success_url = reverse_lazy("personapp:nice_world")      #class와 function의 파이썬에서 불러와지는 방법의 차이(reverse, reverse_lazy)
     template_name = "personapp/create.html"                 #회원가입할 때 보이는 html
+
+
+# CreateView 때는 form이랑 redirect를 정해줘야 했지만 DetailView는 model과 시각화 할 template만 요함
+class AccountDetailView(DetailView):        #import
+    model = User                            #장고에서 기본 제공, import
+    context_object_name = "target_user"       #다른 유저가 내 페이지에 들어왔을 때 그 유저의 정보가 아닌 내 정보를 보여주기 위해 설정
+    template_name = "personapp/detail.html"
