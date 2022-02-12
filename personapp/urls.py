@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
-from django.urls import path, include
-
-from personapp.views import nice_world, AccountCreateView, AccountDetailView
+from django.urls import path
+from django.http import HttpResponse
+from personapp.views import nice_world, AccountCreateView, AccountDetailView, AccountUpdateView
 
 app_name = "personapp"
 
@@ -17,10 +17,7 @@ urlpatterns=[
 
     # 특정 user정보에 접근하기 위한 primary key(고유한 키)
     # pk라는 이름의 integer정보를 받음. (몇 번의 user인가)
-    path("detail/<int:pk>", AccountDetailView.as_view(), name="detail")
+    path("detail/<int:pk>", AccountDetailView.as_view(), name="detail"),
 
-
-
-
-
+    path("update/<int:pk>", AccountUpdateView.as_view(), name="update"),
 ]

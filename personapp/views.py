@@ -5,8 +5,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
+from personapp.forms import AccountUpdateForm
 from personapp.models import NiceWorld
 
 
@@ -40,3 +41,10 @@ class AccountDetailView(DetailView):        #import
     model = User                            #장고에서 기본 제공, import
     context_object_name = "target_user"       #다른 유저가 내 페이지에 들어왔을 때 그 유저의 정보가 아닌 내 정보를 보여주기 위해 설정
     template_name = "personapp/detail.html"
+
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = AccountUpdateForm       #이 form을 forms.py에서 커스텀마이징(아이디 수정불가의 기능을 만들기 위한 작업)
+    success_url = reverse_lazy("personapp:nice_world")
+    template_name = "personapp/update.html"

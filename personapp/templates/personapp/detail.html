@@ -6,6 +6,13 @@
             <h2>{{ target_user.username }}</h2>
             <br/>
             <p>{{ target_user.date_joined }}</p>
+
+            {# target_user가 지금 접속한 user와 같다면 #}
+            {% if target_user == user %}
+                <a href="{% url "personapp:update" pk=target_user.pk %}">
+                    <span>Change Info</span>
+                </a>
+            {% endif %}
         </div>
     </div>
 

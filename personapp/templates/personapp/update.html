@@ -1,18 +1,18 @@
-{% extends "base.html" %}
+{# create.html파일과 틀이 똑같음 #}
 
+{% extends "base.html" %}
 {% load bootstrap4 %}
 
 {% block content %}
 
     <div class="account_form">
         <div style="padding-bottom:2rem">
-            <h3 >
-                Sign up</h3>
+            <h3 > Change Info </h3>
         </div>
         {# personapp에 있는 create route로 연결해라 #}
-        <form action="{% url "personapp:create" %}" method="post">
+        <form action="{% url "personapp:update" pk=user.pk %}" method="post">       {# 접속해 있는 사람의 pk #}
         {% csrf_token %}
-        {% bootstrap_form form %}
+            {% bootstrap_form form %}
             <input type="submit" class="btn btn-secondary rounded-pill col-5 mt-5">
         </form>
     </div>
