@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from personapp.forms import AccountUpdateForm
 from personapp.models import NiceWorld
@@ -48,3 +48,8 @@ class AccountUpdateView(UpdateView):
     form_class = AccountUpdateForm       #이 form을 forms.py에서 커스텀마이징(아이디 수정불가의 기능을 만들기 위한 작업)
     success_url = reverse_lazy("personapp:nice_world")
     template_name = "personapp/update.html"
+
+class AccountDeleteView(DeleteView):
+    model = User
+    success_url = reverse_lazy("personapp:login")
+    template_name = "personapp/delete.html"

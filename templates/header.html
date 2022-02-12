@@ -13,6 +13,9 @@
             <a href="{% url "personapp:login" %}?next={{ request.path }}">       {# url을 next라는 파라이터로 넘겨줌으로써 #}
                 <span>Login</span>
             </a>
+            <a href="{% url "personapp:create" %}">       {# url을 next라는 파라이터로 넘겨줌으로써 #}
+                <span>Sign Up</span>
+            </a>
         {# 로그인이 되어있다면 #}
         {% else %}
             <a href="{% url "personapp:detail" pk=user.pk %}">  {# 로그인되어있으니까 그 user의 pk를 가져옴 #}
