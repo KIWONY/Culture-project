@@ -48,8 +48,10 @@ class AccountUpdateView(UpdateView):
     form_class = AccountUpdateForm       #이 form을 forms.py에서 커스텀마이징(아이디 수정불가의 기능을 만들기 위한 작업)
     success_url = reverse_lazy("personapp:nice_world")
     template_name = "personapp/update.html"
+    context_object_name = "target_user"
 
 class AccountDeleteView(DeleteView):
     model = User
     success_url = reverse_lazy("personapp:login")
     template_name = "personapp/delete.html"
+    context_object_name = "target_user"

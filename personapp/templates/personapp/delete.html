@@ -11,7 +11,7 @@
         </div>
         <span> </span>
         {# personapp에 있는 create route로 연결해라 #}
-        <form action="{% url "personapp:delete" pk=user.pk %}" method="post">
+        <form action="{% url "personapp:delete" pk=target_user.pk %}" method="post">
         {% csrf_token %}
         <input type="submit" class="btn btn-danger rounded-pill col-5 mt-5">
         </form>
