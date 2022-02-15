@@ -2,9 +2,17 @@
 
 {% block content %}
     <div>
+
         <div class="account_form" >
-            <h1>Hello {{ target_user.username }} 😄</h1>
-            <br/>
+            {% if target_user.profile %}        {# .profile은 related_name에서 가져옴 #}
+                <h1>Hello {{ target_user.profile.nickname }} 😄</h1>
+                <br/>
+            {% else %}
+                <a href="{% url "profileapp:create" %}">
+                    <h1>Create Your Profile</h1>
+                </a>
+                <br/>
+            {% endif %}
             <p>{{ target_user.date_joined }}</p>
         <br/>
             {# target_user가 지금 접속한 user와 같다면 #}
