@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
 
@@ -14,7 +14,6 @@ class ProfileCreateView(CreateView):
     model = Profile
     context_object_name = "target_profile"
     form_class = ProfileCreationForm                                    #forms파일에서 생성했던.
-    success_url = reverse_lazy("personapp:nice_world")
     template_name = "profileapp/create.html"
 
 
@@ -28,6 +27,14 @@ class ProfileCreateView(CreateView):
         temp_profile.save()
         return super().form_valid(form)
 
+    # CreateView실행 후(프로필을 만든 후) /detail로 가기 위한 경로를 만들어줌.
+    # 단순히 success_url = reverse_lazy("personapp:detail")로 경로를 만들어줄 수 없고, pk값을 포함하는 함수를 만들어줌.
+    # self.object 가 가리키는 것은 Profile(model). 그리고 그 user.
+    def get_success_url(self):
+        return reverse("personapp:detail", kwargs={"pk": self.object.user.pk})
+
+
+
 
 @method_decorator(profile_ownership_required, "get" )
 @method_decorator(profile_ownership_required, "post" )
@@ -35,8 +42,11 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     context_object_name = "target_profile"
     form_class = ProfileCreationForm                                    #forms파일에서 생성했던.
-    success_url = reverse_lazy("personapp:nice_world")
     template_name = "profileapp/update.html"
+
+    def get_success_url(self):
+        return reverse("personapp:detail", kwargs={"pk": self.object.user.pk})
+
 
 
 
