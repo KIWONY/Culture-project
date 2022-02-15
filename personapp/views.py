@@ -12,6 +12,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from personapp.decorators import account_ownership_required
 from personapp.forms import AccountUpdateForm
 from personapp.models import NiceWorld
+from profileapp.decorators import profile_ownership_required
 
 has_ownership= [account_ownership_required, login_required]
 
@@ -53,8 +54,8 @@ class AccountDetailView(DetailView):        #import
 
 
 
-@method_decorator(has_ownership, "get" )  #일반 function이 사용하는 decorator를 method에 사용할 수 있도록 변환함.
-@method_decorator(has_ownership, "post" )
+@method_decorator(profile_ownership_required, "get" )  #일반 function이 사용하는 decorator를 method에 사용할 수 있도록 변환함.
+@method_decorator(profile_ownership_required, "post" )
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm       #이 form을 forms.py에서 커스텀마이징(아이디 수정불가의 기능을 만들기 위한 작업)

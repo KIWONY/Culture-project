@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 
 from profileapp.forms import ProfileCreationForm
 from profileapp.models import Profile
@@ -25,6 +25,17 @@ class ProfileCreateView(CreateView):
         temp_profile.user = self.request.user       #유저데이터를 request를 보낸 user로 정한다.
         temp_profile.save()
         return super().form_valid(form)
+
+
+@method_decorator(profile, "get" )
+@method_decorator(has_ownership, "post" )
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    context_object_name = "target_profile"
+    form_class = ProfileCreationForm                                    #forms파일에서 생성했던.
+    success_url = reverse_lazy("personapp:nice_world")
+    template_name = "profileapp/update.html"
+
 
 
 
