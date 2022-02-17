@@ -4,7 +4,7 @@
 {% block content %}
 <style>
     .container div {
-      width: 280px;
+      width: 480px;
       background-color: antiquewhite;
       display: flex;
       justify-content: center;
@@ -22,25 +22,30 @@
     {#.container .item11 { height: 400px; }#}
 
 </style>
+<div style="text-align: center; padding-bottom: 2rem">
+    <a href="{% url "articleapp:create" %}" class="btn btn-secondary rounded-pill">
+        <span>Create Your Article</span>
+    </a>
 
+</div>
 <div class="container">
   <div class="item1">
-      <img src="https://picsum.photos/200/300" alt="">
+      <img src="https://picsum.photos/400/300" alt="">
   </div>
   <div class>
-      <img src="https://picsum.photos/200/400" alt="">
+      <img src="https://picsum.photos/400/400" alt="">
   </div>
-  <div class><img src="https://picsum.photos/200/500" alt=""></div>
-  <div class><img src="https://picsum.photos/200/410" alt=""></div>
-  <div class><img src="https://picsum.photos/200/330" alt=""></div>
-  <div class><img src="https://picsum.photos/200/430" alt=""></div>
-  <div class><img src="https://picsum.photos/200/290" alt=""></div>
-  <div class><img src="https://picsum.photos/200/360" alt=""></div>
-  <div class><img src="https://picsum.photos/200/450" alt=""></div>
-  <div class><img src="https://picsum.photos/200/320" alt=""></div>
-  <div class><img src="https://picsum.photos/200/280" alt=""></div>
-  <div class><img src="https://picsum.photos/200/370" alt=""></div>
-  <div class><img src="https://picsum.photos/200/390" alt=""></div>
+  <div class><img src="https://picsum.photos/400/500" alt=""></div>
+  <div class><img src="https://picsum.photos/400/410" alt=""></div>
+  <div class><img src="https://picsum.photos/400/330" alt=""></div>
+  <div class><img src="https://picsum.photos/400/430" alt=""></div>
+  <div class><img src="https://picsum.photos/400/290" alt=""></div>
+  <div class><img src="https://picsum.photos/400/360" alt=""></div>
+  <div class><img src="https://picsum.photos/400/450" alt=""></div>
+  <div class><img src="https://picsum.photos/400/320" alt=""></div>
+  <div class><img src="https://picsum.photos/400/280" alt=""></div>
+  <div class><img src="https://picsum.photos/400/370" alt=""></div>
+  <div class><img src="https://picsum.photos/400/390" alt=""></div>
 </div>
 
 <script src="{% static "js/magicgrid.js" %}"></script>

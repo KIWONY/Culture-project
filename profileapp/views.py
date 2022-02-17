@@ -16,8 +16,6 @@ class ProfileCreateView(CreateView):
     form_class = ProfileCreationForm                                    #forms파일에서 생성했던.
     template_name = "profileapp/create.html"
 
-
-
     # 아래의 form은 forms.py에서 생성한 ProfileCreationForm
     # form_valid 메서드는 유저가 보낸 모든 입력을 검증하고, 검증이 완료 된 이후 실행되는 메서드
     def form_valid(self, form):
@@ -30,6 +28,7 @@ class ProfileCreateView(CreateView):
     # CreateView실행 후(프로필을 만든 후) /detail로 가기 위한 경로를 만들어줌.
     # 단순히 success_url = reverse_lazy("personapp:detail")로 경로를 만들어줄 수 없고, pk값을 포함하는 함수를 만들어줌.
     # self.object 가 가리키는 것은 Profile(model). 그리고 그 user.
+    # self.object로 해당 profile 객체에 접근->profile객체에 연결되어있는 Account객체에 접근->해당pk값을 받아 AccountDetailView로 재연결
     def get_success_url(self):
         return reverse("personapp:detail", kwargs={"pk": self.object.user.pk})
 
