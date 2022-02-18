@@ -28,27 +28,23 @@
     </a>
 
 </div>
+{% if article_list %}
 <div class="container">
-  <div class="item1">
-      <img src="https://picsum.photos/400/300" alt="">
-  </div>
-  <div class>
-      <img src="https://picsum.photos/400/400" alt="">
-  </div>
-  <div class><img src="https://picsum.photos/400/500" alt=""></div>
-  <div class><img src="https://picsum.photos/400/410" alt=""></div>
-  <div class><img src="https://picsum.photos/400/330" alt=""></div>
-  <div class><img src="https://picsum.photos/400/430" alt=""></div>
-  <div class><img src="https://picsum.photos/400/290" alt=""></div>
-  <div class><img src="https://picsum.photos/400/360" alt=""></div>
-  <div class><img src="https://picsum.photos/400/450" alt=""></div>
-  <div class><img src="https://picsum.photos/400/320" alt=""></div>
-  <div class><img src="https://picsum.photos/400/280" alt=""></div>
-  <div class><img src="https://picsum.photos/400/370" alt=""></div>
-  <div class><img src="https://picsum.photos/400/390" alt=""></div>
+    {# for문을 이용하여 list 안에 있는 article 객체를 하나씩 돌아가며 작동 #}
+    {# ArticleListView에서 정한 context_object_name = "article_list" #}
+        {% for article in article_list %}
+            <a href="{% url "articleapp:detail" pk=article.pk %}">
+                {# with구문을 통해 변수 article을 card.html에 있는 article과 똑같다는 것을 설정 #}
+                {% include "snippets/card.html" with article=article %}
+            </a>
+        {% endfor %}
 </div>
-
 <script src="{% static "js/magicgrid.js" %}"></script>
+{% else %}
+    <h3>No Articles</h3>
+{% endif %}
+
+
 
 
 {% endblock %}

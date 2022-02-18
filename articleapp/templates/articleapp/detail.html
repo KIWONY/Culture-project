@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
+    <div style="text-align: center">
         <h1>
             {{ target_article.title }}
         </h1>
@@ -19,13 +19,6 @@
         <a href="{% url "articleapp:delete" pk=target_article.pk %}">
             <p>Delete this article</p>
         </a>
-
-
-
-
-
-
-
 
     </div>
 {% endblock %}
