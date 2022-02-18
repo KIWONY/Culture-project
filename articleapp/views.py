@@ -59,7 +59,7 @@ class ArticleListView(ListView):
     model = Article
     template_name = "articleapp/list.html"
     context_object_name = "article_list"
-    paginate_by = 25    #페이지에 몇개까지 보여줄 것인가
+    paginate_by = 3    #페이지에 몇개까지 보여줄 것인가
 
 
 
