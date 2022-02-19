@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
-    <div style="text-align: center">
+    <div class="art_detail">
         <h1>
             {{ target_article.title }}
         </h1>
 
-        <img src="{{ target_article.image.url }}" alt="">
+        <img class="img_detail" src="{{ target_article.image.url }}" alt="">
 
         <p>
             {{ target_article.content }}
         </p>
 
-        <a href="{% url "articleapp:update" pk=target_article.pk %}">
-            <span>Update your article</span>
-        </a>
-
-        <a href="{% url "articleapp:delete" pk=target_article.pk %}">
-            <p>Delete this article</p>
-        </a>
-
     </div>
+        <div class="detail_btn">
+        {% if target_article.writer == user  %}
+        <a href="{% url "articleapp:update" pk=target_article.pk %}"
+            class="btn btn-outline-secondary"> Update
+        </a>
+
+        <a href="{% url "articleapp:delete" pk=target_article.pk %}"
+            class="btn btn-outline-danger">Delete
+        </a>
+        {% endif %}
+        </div>
+<hr style="color: dimgrey; width: 80%; margin: 1rem auto 2rem auto; height: 3px;">
+
 {% endblock %}

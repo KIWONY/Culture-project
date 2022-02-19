@@ -12,12 +12,12 @@
 }
 
 .header_style{
-    height: 10rem; background-color: lightpink; border-radius: 1rem; margin: 2rem 1rem; text-align: center
+    height: 10rem; background-color: #fd8989; border-radius: 1rem; margin: 2rem 1rem; text-align: center
 }
 
 
 .footer_style{
-    height: 10rem; background-color: lightblue; border-radius: 1rem; margin: 2rem 1rem; text-align :center
+    height: 10rem; background-color: #83c4fa; border-radius: 1rem; margin: 2rem 1rem; text-align :center
 }
 
 .free_style{
@@ -29,3 +29,38 @@
     max-width: 27rem;
     margin: 5rem auto;
 }
+
+.art_detail{
+    text-align: center;
+    margin: 3rem auto ;
+    max-width: 800px;
+
+}
+
+.img_detail{
+    width: 100%;
+    margin: 5rem 0 3rem 0;
+    border-radius: 3rem;
+}
+.detail_btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.container div {
+    width: 400px;
+      /*background-color: antiquewhite;*/
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    border-radius: 3rem;
+    }
+
+.container img{
+    width: 100%;
+    border-radius: 3rem;
+    }
+
+

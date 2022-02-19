@@ -3,18 +3,18 @@
 {% load static %}
 {% block content %}
 <style>
-    .container div {
-      width: 480px;
-      background-color: antiquewhite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 3rem;
-    }
-    .container img{
-        width: 100%;        {# 꽉채워서 #}
-        border-radius: 3rem;
-    }
+    {#.container div {#}
+    {#  width: 400px;#}
+    {#  background-color: antiquewhite;#}
+    {#  display: flex;#}
+    {#  justify-content: center;#}
+    {#  align-items: center;#}
+    {#  border-radius: 3rem;#}
+
+    {#.container img{#}
+    {#    width: 100%;        {# 꽉채워서 #}
+    {#    border-radius: 3rem;#}
+
 
     {#.container .item1 { height: 200px; }#}
     {#.container .item4 { height: 800px; }#}
@@ -22,6 +22,7 @@
     {#.container .item11 { height: 400px; }#}
 
 </style>
+
 <div style="text-align: center; padding-bottom: 2rem">
     <a href="{% url "articleapp:create" %}" class="btn btn-secondary rounded-pill">
         <span>Create Your Article</span>
@@ -39,7 +40,9 @@
             </a>
         {% endfor %}
 </div>
+
 <script src="{% static "js/magicgrid.js" %}"></script>
+
 {% else %}
     <h3>No Articles</h3>
 {% endif %}
