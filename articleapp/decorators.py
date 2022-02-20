@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
+
 from django.http import HttpResponseForbidden
 
 from articleapp.models import Article
-from profileapp.models import Profile
+
 
 
 def article_ownership_required(func):

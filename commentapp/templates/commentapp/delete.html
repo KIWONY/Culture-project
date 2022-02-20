@@ -6,12 +6,12 @@
 
     <div class="account_form">
         <div style="padding-bottom:2rem">
-            <h3 >
-                Delete Your Article : {{ target_article.title }}</h3>
+            <h3>
+                Delete Your Comment : {{ target_comment.content }}
+            </h3>
         </div>
 
-
-        <form action="{% url "articleapp:delete" pk=target_article.pk %}" method="post">
+        <form action="{% url "commentapp:delete" pk=target_comment.pk %}" method="post">
         {% csrf_token %}
         <input type="submit" class="btn btn-danger rounded-pill col-5 mt-5">
         </form>

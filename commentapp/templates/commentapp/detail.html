@@ -1,0 +1,35 @@
+
+<div style="text-align: center" class="comment">
+    <div>
+        <strong>
+            {{ comment.writer.profile.nickname }}
+        </strong>
+        &nbsp;&nbsp;
+        {{ comment.created_at }}
+    </div>
+    <div>
+        {{ comment.content }}
+    </div>
+
+    {% if comment.writer == user %}
+    <div style="text-align: right">
+        <a href="{% url "commentapp:delete" pk=comment.pk %}" class="btn btn-outline-secondary">
+            Delete
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
