@@ -1,0 +1,32 @@
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div class="account_form">
+        <div style="padding-bottom:2rem">
+            <h3 >
+                Comment </h3>
+        </div>
+        {# 이미지 등록을 위한 form 설정에 enctype 추가설정 요 #}
+        <form action="{% url "commentapp:create" %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+            {% if user.is_authenticated %}
+            <input type="submit" class="btn btn-secondary rounded-pill col-5 mt-5">
+            {% else %}
+            <a href="{% url "personapp:login" %}?next={{ request.path }}"
+                class="btn btn-outline-secondary" style="margin-top: 2rem"> Login
+                </a>
+            {# 게시물을 식별할 수 있는 정보로 article_pk 사용 #}
+            {% endif %}
+           <input type="hidden" name="article_pk" value="{{ article.pk }}">
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+
+

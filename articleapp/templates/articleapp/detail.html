@@ -28,4 +28,8 @@
         </div>
 <hr style="color: dimgrey; width: 80%; margin: 1rem auto 2rem auto; height: 3px;">
 
+{# include 구문으로 코멘트html가져와서 놓기 #}
+{# with 구문을 사용함으로써 commentapp/create.html에서 value값으로 article.pk를 사용할 수 있다. #}
+{% include "commentapp/create.html" with article=target_article %}
+
 {% endblock %}
