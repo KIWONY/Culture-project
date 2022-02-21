@@ -11,6 +11,7 @@
         {# 이미지 등록을 위한 form 설정에 enctype 추가설정 요 #}
         <form action="{% url "commentapp:create" %}" method="post">
         {% csrf_token %}
+
         {% bootstrap_form form %}
             {% if user.is_authenticated %}
             <input type="submit" class="btn btn-secondary rounded-pill col-5 mt-5">
