@@ -3,6 +3,7 @@
     font-family: 'Shadows Into Light', cursive;
     font-size: 4rem;
     margin: 2.5rem;
+
 }
 .footer_logo{
     /*font-family: 'Shizuru', cursive;*/
@@ -12,7 +13,11 @@
 }
 
 .header_style{
-    height: 10rem; border-radius: 1rem; margin: 2rem 1rem; text-align: center
+    height: 10rem;
+    border-radius: 1rem;
+    margin: 2rem 1rem;
+    text-align: center;
+
 }
 
 .navbar{
@@ -85,7 +90,38 @@
 }
 
 
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
 
+    .navbar {
+        z-index: 1;
+    }
+
+    .navbar li {
+        padding: 0.3rem 0.3rem;
+    }
+
+    .img_detail {
+        padding: 0 2rem;
+    }
+}
+
+/*---------------------아 이거 다시 해보자-----------------*/
+/*    .navbar {*/
+
+/*        flex-direction: column;*/
+/*        align-items: flex-start;*/
+/*    }*/
+
+/*    .navbar ul{*/
+/*        flex-direction: column;*/
+/*        align-items: center;*/
+/*        width: 100%;*/
+/*    }*/
+
+/*}*/
 
 
 
