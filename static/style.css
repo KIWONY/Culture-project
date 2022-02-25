@@ -1,3 +1,15 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    transform: scale(1.05);
+}
+
+.navbar li a:hover{
+    color: orange;
+}
+
 
 .header_logo{
     font-family: 'Shadows Into Light', cursive;
@@ -35,6 +47,7 @@
 .navbar li{
     padding: 1rem 1rem;
 }
+
 
 .footer_style{
     height: 10rem; background-color: #83c4fa; border-radius: 1rem; margin: 2rem 1rem; text-align :center

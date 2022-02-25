@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div class="account_form">
+        <div style="padding-bottom:2rem">
+            <h3 >
+                Create Your Project</h3>
+        </div>
+        {# 이미지 등록을 위한 form 설정에 enctype 추가설정 요 #}
+        <form action="{% url "projectapp:create" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+            <input type="submit" class="btn btn-secondary rounded-pill col-5 mt-5">
+        </form>
+    </div>
+{% endblock %}

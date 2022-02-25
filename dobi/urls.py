@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('personapp.urls')),
     path('profiles/', include('profileapp.urls')),
     path('articles/', include('articleapp.urls')),
-    path('comments/', include('commentapp.urls'))
+    path('comments/', include('commentapp.urls')),
+    path('projects/', include('projectapp.urls')),
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)       #settings에서 media에 관한 설정을 여기에 가져와서 설정.
