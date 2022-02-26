@@ -1,0 +1,25 @@
+{% load static %}
+
+
+<div style="text-align: center; margin-bottom: 2rem">
+    <a href="{% url "articleapp:create" %}" class="btn btn-secondary rounded-pill">
+        <span>Create Your Article</span>
+    </a>
+
+</div>
+{% if article_list %}
+<div class="container">
+        {% for article in article_list %}
+            <a href="{% url "articleapp:detail" pk=article.pk %}">
+                {% include "snippets/card.html" with article=article %}
+            </a>
+        {% endfor %}
+</div>
+
+<script src="{% static "js/magicgrid.js" %}"></script>
+
+{% else %}
+    <h3>No Articles</h3>
+{% endif %}
+
+    {% include "snippets/pagination.html" with page_obj=page_obj %}
