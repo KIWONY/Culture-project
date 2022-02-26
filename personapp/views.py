@@ -8,7 +8,9 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from personapp.decorators import account_ownership_required
 from personapp.forms import AccountUpdateForm
 from personapp.models import NiceWorld
@@ -47,11 +49,16 @@ class AccountCreateView(CreateView):        #import
 
 
 # CreateView 때는 form이랑 redirect를 정해줘야 했지만 DetailView는 model과 시각화 할 template만 요함
-class AccountDetailView(DetailView):        #import
+class AccountDetailView(DetailView, MultipleObjectMixin):        #import
     model = User                            #장고에서 기본 제공, import
     context_object_name = "target_user"       #다른 유저가 내 페이지에 들어왔을 때 그 유저의 정보가 아닌 내 정보를 보여주기 위해 설정
     template_name = "personapp/detail.html"
 
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        object_list = Article.objects.filter(writer=self.get_object())
+        return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
 
 
 @method_decorator(has_ownership, "get" )  #일반 function이 사용하는 decorator를 method에 사용할 수 있도록 변환함.
