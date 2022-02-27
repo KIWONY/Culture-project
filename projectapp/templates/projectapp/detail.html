@@ -15,6 +15,23 @@
         </p>
 
     </div>
+    <div style="text-align: center">
+    {% if user.is_authenticated %}
+        {# 토글 형태의 구독과 구독취소 기능 #}
+        {% if not subscription %}
+            <a href="{% url "subscribeapp:subscribe" %}?project_pk={{ target_project.pk }}"
+            class="btn btn-outline-secondary">
+            Subscribe
+        </a>
+        {% else %}
+            <a href="{% url "subscribeapp:subscribe" %}?project_pk={{ target_project.pk }}"
+            class="btn btn-outline-secondary">
+            Unsubscribe
+            </a>
+        {% endif %}
+    {% endif %}
+    </div>
+
 
 <hr style="color: dimgrey; width: 80%; margin: 1rem auto 2rem auto; height: 3px;">
 {#    ProjectDetailView에서 정한 object_list#}
