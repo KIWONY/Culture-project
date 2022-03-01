@@ -10,8 +10,9 @@
 
         <img class="img_detail" src="{{ target_article.image.url }}" alt="">
 
-        <p>
-            {{ target_article.content }}
+        <p style="text-align: left">
+            {#tag 사라짐 #}
+            {{ target_article.content | safe }}
         </p>
 
     </div>
