@@ -13,6 +13,7 @@ class Project(models.Model):
 
     create_at = models.DateField(auto_now =True, null = False)
 
+    #포스트 제목과 번호
     #project를 찾을 때 Project.pk값과 그 값에 해당하는 title이 순서대로 나오게 함
     def __str__(self):
         return f"{self.pk} : {self.title}"
