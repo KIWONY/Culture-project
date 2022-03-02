@@ -5,43 +5,48 @@
 
         <div class="account_form" >
             {% if target_user.profile %}        {# .profile은 related_name에서 가져옴 #}
-                <img src="{{ target_user.profile.image.url }}" alt=""
-                     style="height: 14rem; width: 14rem; border-radius: 3rem">
-                <h1>Hello {{ target_user.profile.nickname }} 😄</h1>
-                <h5>{{ target_user.profile.message }}</h5>
-                <br/>
                 {% if target_user == user %}
-
-                    <a href="{% url "profileapp:update" pk=target_user.profile.pk  %}">
-                        <p>Edit</p>
+                    <a class="material-icons" style="margin: 0 0 1.5rem"
+                       href="{% url "profileapp:update" pk=target_user.profile.pk  %}">
+                        edit
                     </a>
                 {% endif %}
+                <br/>
+                <img src="{{ target_user.profile.image.url }}" alt=""
+                     style="height: 14rem; width: 14rem; border-radius: 3rem">
+                <h1>I'm {{ target_user.profile.nickname }} 😄</h1>
+                <br/>
+                <h5>{{ target_user.profile.message }}</h5>
+
             {% else %}
+
                 {% if target_user == user %}
                 <a href="{% url "profileapp:create" %}">
                     <h1>Create Your Profile</h1>
                 </a>
                 <br/>
                 {% else %}
-                    <h5>I haven't set up my profile yet</h5>
-
+                    <h5>I haven't set up my profile yet.</h5>
                 {% endif %}
+
             {% endif %}
-            <br/>
-            <p>{{ target_user.date_joined }}</p>
-        <br/>
+
+            <hr style="color: dimgrey; width: 80%; margin: 3rem auto 1rem; height: 1px;">
+
+            <p><I>{{ target_user.date_joined }}</I></p>
+            <div>
             {# target_user가 지금 접속한 user와 같다면 #}
             {% if target_user == user %}
                 <a href="{% url "personapp:update" pk=target_user.pk %}">
-                    <span>Change Info</span>
-                </a>
-                <br/>
-                <br/>
-                <a href="{% url "personapp:delete" pk=user.pk %}">
-                    <span>Delete My Account</span>
+                    <span class="btn btn-outline-secondary btn-sm" >Change Info</span>
                 </a>
 
+                <a href="{% url "personapp:delete" pk=user.pk %}">
+                    <span class="btn btn-outline-danger btn-sm" >Delete My Account</span>
+                </a>
+            </div>
             {% endif %}
+
         </div>
     </div>
 

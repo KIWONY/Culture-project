@@ -1,12 +1,13 @@
 {% load static %}
 
-
+{% if target_user == user %}
 <div style="text-align: center; margin-bottom: 2rem">
     <a href="{% url "articleapp:create" %}" class="btn btn-secondary rounded-pill">
         <span>Create Your Article</span>
     </a>
-
 </div>
+{% endif %}
+
 {% if article_list %}
 <div class="container">
         {% for article in article_list %}
