@@ -29,6 +29,7 @@ environ.Env.read_env(
     env_file = os.path.join(BASE_DIR,'.env')
 )
 # pymysql.install_as_MySQLdb()
+#20210305 SECRET_KEY바꿈
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
