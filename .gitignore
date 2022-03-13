@@ -83,6 +83,7 @@ venv/
 .idea/
 
 db.sqlite3
+.db.sqlite3
 
 __pycache__/
 /db_backup.sqlite3

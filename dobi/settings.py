@@ -53,8 +53,34 @@ INSTALLED_APPS = [
     'articleapp',
     'commentapp',
     'projectapp',
-    'subscribeapp'
+    'subscribeapp',
+
+    # allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.auth0',
+    'allauth.socialaccount.providers.kakao',
 ]
+
+#allauth 추가
+AUTHENTICATION_BACKENDS = (
+#allauth와 상관없이 admin에서 username으로 로그인하기 위해 필요
+'django.contrib.auth.backends.ModelBackend',
+#
+#allauth의 authentication 메소드
+'allauth.account.auth_backends.AuthenticationBackend'
+)
+#
+
+# default 값 방지
+LOGIN_REDIRECT_URL = reverse_lazy("nice_world")
+LOGOUT_REDIRECT_URL = reverse_lazy("personapp:login")
+# ACCOUNT_SIGNUP_REDIRECT_URL = reverse_lazy("personapp:detail")
+ACCOUNT_LOGOUT_ON_GET = True    #로그아웃 시 자동 로그아웃
+
+SITE_ID= 4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,10 +168,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-
-# default 값 방지
-LOGIN_REDIRECT_URL = reverse_lazy("personapp:nice_world")
-LOGOUT_REDIRECT_URL = reverse_lazy("personapp:login")
 
 
 # Default primary key field type

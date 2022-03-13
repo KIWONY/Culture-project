@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% load bootstrap4 %}
-
+{% load socialaccount %}
 
 
 {% block content %}
@@ -16,7 +16,10 @@
 {#                {{ form }} 이거 대신 #}
                 {% bootstrap_form form %}
                 <input type="submit" class="btn btn-secondary rounded-pill col-5 mt-5">
+{#                카카오로그인  #}
+                <a href="{% provider_login_url "kakao" method="oauth2" %}">카카오톡으로 로그인</a>
             </form>
+
 
         </div>
     </div>

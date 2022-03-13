@@ -2,11 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.views.generic.list import MultipleObjectMixin
 
@@ -80,3 +81,17 @@ class AccountDeleteView(DeleteView):
     success_url = reverse_lazy("personapp:login")
     template_name = "personapp/delete.html"
     context_object_name = "target_user"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
