@@ -89,3 +89,5 @@ __pycache__/
 /db_backup.sqlite3
 
 media/
+
+culture_key.pem
