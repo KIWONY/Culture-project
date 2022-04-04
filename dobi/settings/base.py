@@ -15,27 +15,9 @@ from pathlib import Path
 import environ,os
 from django.urls import reverse_lazy
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# SECURITY WARNING: keep the secret key used in production secret!
-
-environ.Env.read_env(
-    env_file = os.path.join(BASE_DIR,'.env')
-)
-# pymysql.install_as_MySQLdb()
-#20210305 SECRET_KEY바꿈
-SECRET_KEY = env('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
-
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -115,14 +97,7 @@ WSGI_APPLICATION = 'dobi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+# sqlite->mariadb
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
