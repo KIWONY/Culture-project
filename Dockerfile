@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN echo "ha final jaebal"
+RUN echo "ha..........jaebal"
 
 RUN git clone https://github.com/KIWONY/Culture-project.git
 
